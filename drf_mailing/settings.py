@@ -116,7 +116,7 @@ CELERY_CACHE_BACKEND = 'default'
 CELERY_BEAT_SCHEDULE = {
    'every-day-statistics-email': {
        'task': 'mailing.tasks.send_mail_task',
-       'schedule': crontab(minute=0, hour=0),
+       'schedule': crontab(hour=7),
    },
 }
 

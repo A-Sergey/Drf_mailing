@@ -1,6 +1,7 @@
 # Сервис уведомлений
 ---
-*Сервис уравления рассылками, API администрирования и получения статистики.*
+*Сервис управления рассылками, API администрирования и получение статистики.*
+*Выполнены дополнительные задания (1, 3, 5, 6, 8 ,9, 11, 12).*
 
 ---
 ### **Для запуска тестов необходимо:**
@@ -14,7 +15,7 @@
 DEBUG=False
 ALLOWED_HOSTS=127.0.0.1,localhost
 TOKEN=token
-URL_API=https://probe.fbrq.cloud/v1/send/
+URL_API=url_api
 SERVER_EMAIL = server_mail
 DEFAULT_FROM_EMAIL = default_from_email
 EMAIL_BACKEND = email_backend
@@ -26,7 +27,7 @@ EMAIL_USE_TLS = True
 SEND_STAT=example@example.ru #email для отправки статистики
 3. В директории проекта создать виртуальное окружение:
 >python3 -m venv venv
-4. Активировать вируальное окружение:
+4. Активировать виртуальное окружение:
 >source venv\bin\activate
 5. Установка зависимостей:
 >pip3 install -r requirements.txt
@@ -48,13 +49,13 @@ SEND_STAT=example@example.ru #email для отправки статистики
 DEBUG=False
 ALLOWED_HOSTS=127.0.0.1,localhost
 TOKEN=token
-URL_API=https://probe.fbrq.cloud/v1/send/
+URL_API=url_api
 POSTGRES_ENGINE=django.db.backends.postgresql_psycopg2
-POSTGRES_DB=django_db
-POSTGRES_USER=django_user
-POSTGRES_PASSWORD=django_password
+POSTGRES_DB=db
+POSTGRES_USER=user
+POSTGRES_PASSWORD=password
 POSTGRES_HOST=db
-POSTGRES_PORT=5432
+POSTGRES_PORT=port
 SERVER_EMAIL = server_mail
 DEFAULT_FROM_EMAIL = default_from_email
 EMAIL_BACKEND = email_backend
@@ -74,13 +75,19 @@ SEND_STAT = example@example.ru #email для отправки статистик
 >http://0.0.0.0:8000/api/v1/
 - Клиенты:
 >http://0.0.0.0:8000/api/v1/clients/
+- Просмотр и редактирование \<pk> клиента:
+>http://0.0.0.0:8000/api/v1/clients/\<pk>/
 - Рассылки:
 >http://0.0.0.0:8000/api/v1/mailings/
+- Просмотр и редактирование \<pk> рассылки:
+>http://0.0.0.0:8000/api/v1/mailings/\<pk>/
 - Сообщения:
 >http://0.0.0.0:8000/api/v1/messages/
+- Просмотр и редактирование \<pk> сообщения:
+>http://0.0.0.0:8000/api/v1/messages/\<pk>/
 - Статистика по рассылкам:
 >http://0.0.0.0:8000/api/v1/mailings/complited_mailing/
 - /docs проекта:
->http://127.0.0.1:8000/docs/
+>http://0.0.0.0:8000/docs/
 - Celery flower:
 >http://0.0.0.0:5555/
