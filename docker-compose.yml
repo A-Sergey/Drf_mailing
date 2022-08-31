@@ -6,13 +6,23 @@ services:
         build: .
         command: > 
             bash -c "python manage.py migrate --run-syncdb
-            && python manage.py runserver 0.0.0.0:8000"
+            && gunicorn drf_mailing.wsgi:application --bind 0.0.0.0:1337"
         volumes:
             - ./:/usr/src/app/
-        ports:
-            - 8000:8000
+            - static_volume:/usr/src/app/static
+        expose:
+            - 1337
         depends_on:
             - db
+    nginx:
+        container_name: nginx
+        build: ./nginx
+        volumes:
+            - static_volume:/usr/src/app/static
+        ports:
+            - 8000:80
+        depends_on:
+            - web
     db:
         container_name: DB
         image: postgres:12.0-alpine
@@ -51,3 +61,4 @@ services:
             - redis
 volumes:
     postgres_volume:
+    static_volume:

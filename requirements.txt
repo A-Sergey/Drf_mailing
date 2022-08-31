@@ -21,6 +21,7 @@ django-timezone-field==5.0
 djangorestframework==3.13.1
 drf-yasg==1.21.3
 flower==1.2.0
+gunicorn==20.1.0
 humanize==4.3.0
 idna==3.3
 inflection==0.5.1
